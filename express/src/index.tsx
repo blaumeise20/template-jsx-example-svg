@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import * as jsxt from "template-jsx";
 import { getPaintOptions } from "./seedrandom";
@@ -41,6 +42,7 @@ function paint(seed: string): jsxt.Element {
 const app = express();
 const render = jsxt.create({ indent: false, useSelfCloseTags: true });
 
+app.use(cors());
 app.get("/", render.createHandler(() => {
     return <>
         Open <code>/:seed</code>
@@ -51,5 +53,8 @@ app.get("/:seed", render.createHandler(({ req }) => {
         {paint(req.params.seed)}
     </svg>;
 }));
+app.get("/f/:seed", (req, res) => {
+    res.send(jsxt.render(paint(req.params.seed), { indent: false, useSelfCloseTags: true }));
+});
 
 app.listen(2004);
