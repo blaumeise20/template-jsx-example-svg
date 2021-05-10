@@ -1,9 +1,7 @@
-import cors from "cors";
-import express from "express";
 import * as jsxt from "template-jsx";
 import { getPaintOptions } from "./seedrandom";
 
-function paint(seed: string): jsxt.Element {
+export function paint(seed: string): jsxt.Element {
     const { layers, angle, length, randomAngle, randomLength, random } = getPaintOptions(seed);
 
     function paintBranch(x1: number, y1: number, currentAngle: number, currentLength: number, currentLayer: number): jsxt.Element {
@@ -38,23 +36,3 @@ function paint(seed: string): jsxt.Element {
     // Return trunk
     return paintBranch(300, 500, -90, 100, 0);
 }
-
-const app = express();
-const render = jsxt.create({ indent: false, useSelfCloseTags: true });
-
-app.use(cors());
-app.get("/", render.createHandler(() => {
-    return <>
-        Open <code>/:seed</code>
-    </>;
-}));
-app.get("/:seed", render.createHandler(({ req }) => {
-    return <svg width="600" height="500">
-        {paint(req.params.seed)}
-    </svg>;
-}));
-app.get("/f/:seed", (req, res) => {
-    res.send(jsxt.render(paint(req.params.seed), { indent: false, useSelfCloseTags: true }));
-});
-
-app.listen(2004);
