@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "outDir": "dist/",
+        "target": "esnext",
+        "jsx": "react",
+        "jsxFactory": "jsxt.createElement",
+        "jsxFragmentFactory": "jsxt.Fragment",
+        "moduleResolution": "node",
+        "esModuleInterop": true
+    },
+    "include": ["src/"]
+}
