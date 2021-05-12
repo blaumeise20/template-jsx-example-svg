@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import * as jsxt from "template-jsx";
-import { getPaintOptions } from "./seedrandom";
+import { getPaintOptions, colors } from "./seedrandom";
 
 function paint(seed: string): jsxt.Element {
     const { layers, angle, length, randomAngle, randomLength, random } = getPaintOptions(seed);
@@ -15,7 +15,7 @@ function paint(seed: string): jsxt.Element {
             // var color = tinycolor("#001100");
             // color.lighten(currentLayer * 3).toString()
             return <>
-                <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#000" stroke-width={layers - currentLayer} />
+                <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colors[currentLayer * 3]} stroke-width={layers - currentLayer} />
                 {paintBranch(
                     x2,
                     y2,

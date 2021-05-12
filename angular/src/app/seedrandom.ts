@@ -28,3 +28,5 @@ export function getPaintOptions(seed: string): PaintOptions {
 }
 
 interface PaintOptions { layers: number, angle: number, length: number, randomAngle: number, randomLength: number, random: () => number }
+
+export const colors = ["#001100", "#001600", "#001b00", "#002000", "#002500", "#002a00", "#003000", "#003500", "#003a00", "#003f00", "#004400", "#004900", "#004e00", "#005300", "#005800", "#005d00", "#006300", "#006800", "#006d00", "#007200", "#007700", "#007c00", "#008100", "#008600", "#008b00", "#009000", "#009600", "#009b00", "#00a000", "#00a500", "#00aa00", "#00af00", "#00b400", "#00b900", "#00be00", "#00c300", "#00c900", "#00ce00", "#00d300", "#00d800", "#00dd00", "#00e200", "#00e700", "#00ec00", "#00f100", "#00f600", "#00fc00", "#02ff02", "#07ff07", "#0cff0c"];
