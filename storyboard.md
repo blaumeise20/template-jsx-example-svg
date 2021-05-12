@@ -1,5 +1,13 @@
 # Storyboard
 
+## Checkliste vorab
+
+* Angular
+  * *paint.tsx* löschen
+  * In *tsx-renderer.component.ts* client-seitige Logik löschen
+* Console
+  * *app.tsx* entleeren
+
 ## Vorstellung
 
 ## TSX Basics
@@ -87,11 +95,24 @@
 
 ## *template-jsx* in Angular am Client
 
-1. *client-side-renderer*, *app-routing.module.ts*, *app.module.ts*, *paint.tsx*, *seedrandom.ts* reinkopieren
+1. *paint.tsx* in *angular/src/app* anlegen
 
-1. Zeigen, dass *paint.tsx* genau der gleich Code wie am Server ist.
+   ```tsx
+   import * as jsxt from "template-jsx";
+   import { getPaintOptions, colors } from "./seedrandom";
 
-1. *angular\src\app\client-side-renderer\client-side-renderer.component.ts* öffnen
+   export function paint(seed: string): jsxt.Element { ... } /* Aus express/src/index.tsx kopieren */
+   ```
+
+1. In *tsx-renderer.component.ts* `getTree` ändern:
+
+   ```ts
+   return this.domSanitizer.bypassSecurityTrustHtml(
+        jsxt.render(paint(seed))
+   );
+   ```
+
+1. `switchMap` auf `map` ändern
    * RxJS Pipe, die Eingaben durch client-seitiges tsx-Rendering das Baum-SVG erzeugt
 
 ## Fazit
