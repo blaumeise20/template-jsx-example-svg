@@ -7,6 +7,7 @@
   * In *tsx-renderer.component.ts* client-seitige Logik löschen
 * Console
   * *app.tsx* entleeren
+  * *tsconfig.json* - *jsxFactory* Kommentar
 
 ## Vorstellung
 
