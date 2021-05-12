@@ -5,14 +5,12 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClientSideRendererComponent } from './client-side-renderer/client-side-renderer.component';
-import { ServerSideRendererComponent } from './server-side-renderer/server-side-renderer.component';
+import { TsxRendererComponent } from './tsx-renderer/tsx-renderer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientSideRendererComponent,
-    ServerSideRendererComponent
+    TsxRendererComponent
   ],
   imports: [
     BrowserModule,

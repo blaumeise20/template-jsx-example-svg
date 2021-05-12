@@ -12,8 +12,6 @@ function paint(seed: string): jsxt.Element {
             const x2 = x1 + (Math.cos(currentAngle * Math.PI / 180) * currentLength);
             const y2 = y1 + (Math.sin(currentAngle * Math.PI / 180) * currentLength);
 
-            // var color = tinycolor("#001100");
-            // color.lighten(currentLayer * 3).toString()
             return <>
                 <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colors[currentLayer * 3]} stroke-width={layers - currentLayer} />
                 {paintBranch(
